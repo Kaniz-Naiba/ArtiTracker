@@ -53,9 +53,9 @@ const router = createBrowserRouter([
       {
         path: "/all-artifacts",
         element: (
-          <PrivateRoute>
+          
             <AllArtifacts/>
-          </PrivateRoute>
+          
         ),
       },
       {

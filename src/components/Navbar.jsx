@@ -36,22 +36,118 @@ const Navbar = () => {
     }
   };
 
-  const navLinks = (
+  const publicLinks = (
     <>
-      <div><NavLink to="/" className="hover:text-red-600 dark:text-white">Home</NavLink></div>
-      <div><NavLink to="/add-artifact" className="hover:text-red-600 dark:text-white">Add Artifact</NavLink></div>
-      <div><NavLink to="/all-artifacts" className="hover:text-red-600 dark:text-white">AllArtifacts</NavLink></div>
-      <div><NavLink to="/liked-artifacts" className="hover:text-red-600 dark:text-white">LikedArtifacts</NavLink></div>
-      <div><NavLink to="/my-artifacts" className="hover:text-red-600 dark:text-white">My Posted Artifacts</NavLink></div>
+      <div>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            `hover:text-red-600 dark:text-white ${
+              isActive ? "text-red-600 font-semibold" : ""
+            }`
+          }
+        >
+          Home
+        </NavLink>
+      </div>
+      <div>
+        <NavLink
+          to="/all-artifacts"
+          className={({ isActive }) =>
+            `hover:text-red-600 dark:text-white ${
+              isActive ? "text-red-600 font-semibold" : ""
+            }`
+          }
+        >
+          All Artifacts
+        </NavLink>
+      </div>
+      {!user && (
+        <>
+          <div>
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                `hover:text-red-600 dark:text-white ${
+                  isActive ? "text-red-600 font-semibold" : ""
+                }`
+              }
+            >
+              Login
+            </NavLink>
+          </div>
+          <div>
+            <NavLink
+              to="/signup"
+              className={({ isActive }) =>
+                `hover:text-red-600 dark:text-white ${
+                  isActive ? "text-red-600 font-semibold" : ""
+                }`
+              }
+            >
+              Signup
+            </NavLink>
+          </div>
+        </>
+      )}
+    </>
+  );
+
+  const protectedLinks = (
+    <>
+      <div>
+        <NavLink
+          to="/add-artifact"
+          className={({ isActive }) =>
+            `hover:text-red-600 dark:text-white ${
+              isActive ? "text-red-600 font-semibold" : ""
+            }`
+          }
+        >
+          Add Artifact
+        </NavLink>
+      </div>
+      <div>
+        <NavLink
+          to="/liked-artifacts"
+          className={({ isActive }) =>
+            `hover:text-red-600 dark:text-white ${
+              isActive ? "text-red-600 font-semibold" : ""
+            }`
+          }
+        >
+          Liked Artifacts
+        </NavLink>
+      </div>
+      <div>
+        <NavLink
+          to="/my-artifacts"
+          className={({ isActive }) =>
+            `hover:text-red-600 dark:text-white ${
+              isActive ? "text-red-600 font-semibold" : ""
+            }`
+          }
+        >
+          My Posted Artifacts
+        </NavLink>
+      </div>
     </>
   );
 
   return (
     <div className="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50 transition-colors">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2 text-3xl font-extrabold text-yellow-600 hover:scale-105 transition-transform duration-300">
+        <Link
+          to="/"
+          className="flex items-center gap-2 text-3xl font-extrabold text-yellow-600 hover:scale-105 transition-transform duration-300"
+        >
           <span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-8 h-8">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              className="w-8 h-8"
+            >
               <path d="M3 3v2h2v14H3v2h18v-2h-2V5h2V3H3zm4 2h10v14H7V5z" />
             </svg>
           </span>
@@ -60,12 +156,16 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="space-x-6 font-medium hidden md:flex text-gray-700 dark:text-white">
-          {navLinks}
+          {publicLinks}
+          {user && protectedLinks}
         </div>
 
         {/* Mobile Menu Icon */}
         <div className="md:hidden">
-          <button onClick={() => setMenuOpen(!menuOpen)} className="text-pink-600 text-xl">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-pink-600 text-xl"
+          >
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -81,19 +181,22 @@ const Navbar = () => {
 
           {!user ? (
             <>
-              <Link to="/login" className="text-green-600 font-semibold hover:underline dark:text-green-400">
+              <Link
+                to="/login"
+                className="text-green-600 font-semibold hover:underline dark:text-green-400"
+              >
                 Login
               </Link>
-              <Link to="/signup" className="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">
+              <Link
+                to="/signup"
+                className="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700"
+              >
                 Signup
               </Link>
             </>
           ) : (
             <div className="relative">
-              <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="focus:outline-none"
-              >
+              <button onClick={() => setDropdownOpen(!dropdownOpen)} className="focus:outline-none">
                 <img
                   src={user.photoURL}
                   alt="User"
@@ -139,7 +242,9 @@ const Navbar = () => {
       {/* Mobile Dropdown */}
       {menuOpen && (
         <div className="md:hidden bg-white dark:bg-gray-800 px-4 pb-4 space-y-3 text-gray-700 dark:text-white">
-          {navLinks}
+          {publicLinks}
+          {user && protectedLinks}
+
           <div className="flex flex-col space-y-2 mt-2">
             <button
               onClick={() => setDarkMode(!darkMode)}
@@ -152,7 +257,10 @@ const Navbar = () => {
                 <Link to="/login" className="text-green-600 hover:underline dark:text-green-400">
                   Login
                 </Link>
-                <Link to="/signup" className="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700">
+                <Link
+                  to="/signup"
+                  className="bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700"
+                >
                   Signup
                 </Link>
               </>
