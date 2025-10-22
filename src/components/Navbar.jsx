@@ -43,6 +43,9 @@ const Navbar = () => {
       <div><NavLink to="/all-artifacts" className="hover:text-red-600 dark:text-white">AllArtifacts</NavLink></div>
       <div><NavLink to="/liked-artifacts" className="hover:text-red-600 dark:text-white">LikedArtifacts</NavLink></div>
       <div><NavLink to="/my-artifacts" className="hover:text-red-600 dark:text-white">My Posted Artifacts</NavLink></div>
+        <div><NavLink to="/events" className="hover:text-red-600 dark:text-white">Events</NavLink></div>
+           <div><NavLink to="/random-artifact" className="hover:text-red-600 dark:text-white">Random Artifact</NavLink></div>
+      
     </>
   );
 
@@ -119,6 +122,13 @@ const Navbar = () => {
                     onClick={() => setDropdownOpen(false)}
                   >
                     Liked Artifacts
+                  </Link>
+                   <Link
+                    to="/random-artifact"
+                    className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    Random Artifact
                   </Link>
                   <button
                     onClick={() => {

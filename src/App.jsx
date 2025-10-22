@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
+import Events from "./pages/Events";
 import AddArtifact from "./pages/AddArtifact";
 import AllArtifacts from "./pages/AllArtifacts";
 import MyArtifacts from "./pages/MyArtifacts";
@@ -12,6 +13,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import UpdateArtifact from "./pages/UpdateArtifact";
 import { ToastContainer } from "react-toastify";
 import LikedArtifacts from "./pages/LikedArtifacts";
+import RandomArtifact from "./components/RandomArtifact";
 import "react-toastify/dist/ReactToastify.css";
 
 
@@ -75,6 +77,25 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/events", // <-- NEW route
+        element: (
+          <PrivateRoute>
+            <Events />
+          </PrivateRoute>
+        ),
+      },
+      {
+  path: "/random-artifact",
+  element: (
+    <PrivateRoute>
+      <RandomArtifact />
+    </PrivateRoute>
+  ),
+}
+     
+
+
     ],
   },
 ]);
