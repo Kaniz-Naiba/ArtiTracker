@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Typewriter } from 'react-simple-typewriter';
 import { FaClock, FaShieldAlt, FaTasks } from "react-icons/fa";
+import Testimonials from "../components/Testimonials"
 const bannerSlides = [
   {
     title: "Discover Rare Artifacts",
@@ -299,7 +300,7 @@ const Home = () => {
     </div>
   </div>
 </motion.section>
-
+            <Testimonials />
     </div>
   );
 };
