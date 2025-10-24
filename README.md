@@ -2,7 +2,7 @@
 
 Welcome to the **Artifacts Tracker**, a web application designed to manage and explore historical artifacts. Users can register, log in, and contribute artifact data to a shared catalog. This app features JWT-based authentication and MongoDB backend integration.
 
-live link : https://steady-gingersnap-13c2a6.netlify.app/
+live link : https://polite-haupia-80d9ac.netlify.app/
 ---
 
 ## 🎯 Purpose
